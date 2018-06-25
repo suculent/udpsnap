@@ -39,9 +39,11 @@ import AVFoundation
     }
     
     internal func saveImageDataWithCurrentIndex(_ imageData: Data!) {
-        let filename = "step_\(self.captureIndex)" // OK
-        let url = self.URLForDocuments().appendingPathComponent(filename)
-        self.saveDataWithFilename(path: url, data: imageData)
+        let filename = "step_\(self.captureIndex).jpeg" // OK
+        let doc = self.URLForDocuments().appendingPathComponent(filename)
+        self.saveDataWithFilename(path: doc, data: imageData)        
+        let cloud = self.URLForCloud().appendingPathComponent(filename)
+        self.saveDataWithFilename(path: cloud, data: imageData)
     }
     
     func saveDataWithFilename(path: URL, data: Data) {
@@ -55,23 +57,30 @@ import AVFoundation
     func URLForDocuments() -> URL! {
         var documentURL: URL?
         do {
-            // Saves all photos to iCloud Drive by default
-            let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents").appendingPathComponent("Photogrammetry")
-            if iCloudDocumentsURL != nil {
-                return iCloudDocumentsURL
-            }
-            // Fallback to documents if iCloud Drive not available
-            print("Falling back to documents if iCloud Drive not available...");
+            print("Saving to documents...");
             try documentURL = FileManager.default.url(
                 for: FileManager.SearchPathDirectory.documentDirectory,
                 in: FileManager.SearchPathDomainMask.userDomainMask,
-                appropriateFor: nil, create: false)
+                appropriateFor: nil, create: true)
         } catch {
             documentURL = nil
         }
         return documentURL
     }
     
+    func URLForCloud() -> URL! {
+        var documentURL: URL?
+        do {
+            let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)
+            if iCloudDocumentsURL != nil {
+                print("Saving to iCloud...");
+                return iCloudDocumentsURL
+            }
+        } catch {
+            documentURL = nil
+        }
+        return documentURL
+    }
     
     func setFocusOptions(device: AVCaptureDevice) {
         if device.isFocusModeSupported(AVCaptureDevice.FocusMode.autoFocus) {

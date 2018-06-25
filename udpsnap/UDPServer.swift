@@ -12,6 +12,8 @@ import Dispatch
 
 /** Originally an EchoServer, should direct messages up to manager */
 
+
+
 class UDPServer: NSObject {
     
     static let quitCommand: String = "QUIT"
@@ -27,9 +29,14 @@ class UDPServer: NSObject {
     
     var delegate: UDPServerDelegate?
     
+    var browser: NetServiceBrowser?
+    var service: NetService?
+    
     init(port: Int, delegate: UDPServerDelegate) {
         self.port = port
         self.delegate = delegate
+        super.init()
+        self.initNetService()
     }
     
     deinit {
@@ -40,48 +47,63 @@ class UDPServer: NSObject {
         self.listenSocket?.close()
     }
     
-    func queryForClient() {
-        let service = NetService(domain: "local.", type: "_rotocam._udp", name: "rotocam", port: Int32(self.port))
-        service.publish()
-        print("Publishing netservice _rotocam._udp")
+    func initNetService() {
+        let serviceType = "_camera._udp."
+        service = NetService(domain: "local.", type: serviceType, name: "rotocam", port: Int32(self.port))
+        //service = NetService(domain: "local.", type: serviceType, name: "rotocam")
+        service!.schedule(in: .main, forMode: .defaultRunLoopMode)
+        service!.delegate = self
+        service!.publish(options: []) // listener is TCP only!
+
+        print("Publishing netservice \(serviceType)")
         
-        let browser = NetServiceBrowser()
-        browser.searchForServices(ofType: "_rotopad._udp.", inDomain: "local.")
-        browser.delegate = self
-        withExtendedLifetime((browser, delegate)) {
-            RunLoop.main.run()
-        }
+        browser = NetServiceBrowser()
+        browser!.searchForServices(ofType: "_rotopad._udp", inDomain: "local.")
+        browser!.delegate = self
+        browser!.schedule(in: .main, forMode: .defaultRunLoopMode)
     }
     
     func run() {
-        
-        queryForClient()
         
         let queue = DispatchQueue.global(qos: .background)
         
         queue.async(execute: { [unowned self] in
             
             do {
-                // Create an IPV6 socket...
-                try self.listenSocket = Socket.create(family: .inet)
+                // Create an IPV4 UDP socket...
+                try self.listenSocket = Socket.create(family: .inet, type: .datagram, proto: .udp)
                 
                 guard let socket = self.listenSocket else {
-                    
                     print("Unable to unwrap socket...")
                     return
                 }
                 
-                try socket.listen(on: self.port)
+                print("Trying to listen on port: \(self.port)")
+                
+                var message = NSMutableData(capacity: UDPServer.bufferSize)
+                let sockinfo = try socket.listen(forMessage: message!, on: self.port, maxBacklogSize: Socket.SOCKET_DEFAULT_MAX_BACKLOG)
                 
                 print("Listening on port: \(socket.listeningPort)")
                 
                 repeat {
-                    let newSocket = try socket.acceptClientConnection()
+                    let datagram = try socket.readDatagram(into: message!)
                     
-                    print("Accepted connection from: \(newSocket.remoteHostname) on port \(newSocket.remotePort)")
-                    print("Socket Signature: \(newSocket.signature!.description)")
-                    
-                    self.addNewConnection(socket: newSocket)
+                    if datagram.bytesRead > 0 {
+                        
+                        let command = String(data: message! as Data, encoding: String.Encoding.ascii)
+                            
+                        // Photo capture command
+                        if (command?.hasPrefix(UDPServer.photoCommand))! {
+                            if let d = self.delegate {
+                                d.receive(message: command!)
+                            }
+                        }
+                        
+                        print()
+                        
+                        // Cleanup the buffer after use.
+                        message = NSMutableData(capacity: UDPServer.bufferSize)
+                    }
                     
                 } while self.continueRunning
                 
@@ -100,77 +122,6 @@ class UDPServer: NSObject {
             }
         })
         
-    }
-    
-    func addNewConnection(socket: Socket) {
-        
-        // Add the new socket to the list of connected sockets...
-        socketLockQueue.sync { [unowned self, socket] in
-            self.connectedSockets[socket.socketfd] = socket
-        }
-        
-        // Get the global concurrent queue...
-        let queue = DispatchQueue.global(qos: .background)
-        
-        // Create the run loop work item and dispatch to the default priority global queue...
-        queue.async { [unowned self, socket] in
-            
-            var shouldKeepRunning = true
-            
-            var readData = Data(capacity: UDPServer.bufferSize)
-            
-            do {
-                // Write the welcome string...
-                try socket.write(from: "Hello, type 'QUIT' to end session\nor 'SHUTDOWN' to stop server.\n")
-                
-                repeat {
-                    let bytesRead = try socket.read(into: &readData)
-                    
-                    if bytesRead > 0 {
-                        
-                        guard let response = String(data: readData, encoding: .utf8) else {
-                            print("Error decoding response...")
-                            readData.count = 0
-                            break
-                        }
-                        
-                        print("Server received from connection at \(socket.remoteHostname):\(socket.remotePort): \(response) ")
-                        
-                        // Photo capture command
-                        if response.hasPrefix(UDPServer.photoCommand) {
-                            if let d = self.delegate {
-                                d.receive(message: response)
-                            }
-                        }
-                    }
-                    
-                    if bytesRead == 0 {
-                        shouldKeepRunning = false
-                        break
-                    }
-                    
-                    readData.count = 0
-                    
-                } while shouldKeepRunning
-                
-                print("Socket: \(socket.remoteHostname):\(socket.remotePort) closed...")
-                socket.close()
-                
-                self.socketLockQueue.sync { [unowned self, socket] in
-                    self.connectedSockets[socket.socketfd] = nil
-                }
-                
-            }
-            catch let error {
-                guard let socketError = error as? Socket.Error else {
-                    print("Unexpected error by connection at \(socket.remoteHostname):\(socket.remotePort)...")
-                    return
-                }
-                if self.continueRunning {
-                    print("Error reported by connection at \(socket.remoteHostname):\(socket.remotePort):\n \(socketError.description)")
-                }
-            }
-        }
     }
     
     /* Should be called on app termination. Wahaaa... */
@@ -197,14 +148,64 @@ class UDPServer: NSObject {
     }
 }
 
+extension UDPServer: NetServiceDelegate {
+    func netServiceWillPublish(_ sender: NetService) {
+        print("Will publish: \(sender)")
+    }
+    
+    func netServiceDidPublish(_ sender: NetService) {
+        print("Did publish: \(sender)")
+    }
+    
+    private func netService(_ sender: NetService, didNotPublish error: Error) {
+        print("Did not publish: \(sender), because: \(error)")
+    }
+    
+    func netServiceDidStop(_ sender: NetService) {
+        print("Did stop: \(sender)")
+    }
+    
+    func netService(_ sender: NetService, didAcceptConnectionWith socket: Socket) {
+        print("Did accept connection: \(sender), from: \(socket.remoteHostname)")
+        //print(try! socket.readString() ?? "")
+        //try! socket.write(from: "HTTP/1.1 200 OK\r\nContent-Length: 13\r\n\r\nHello, world!")
+        //socket.close()
+    }
+}
+
 extension UDPServer: NetServiceBrowserDelegate {
     
     @objc public func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        print("NetServiceBrowser did find service %s", service.domain)
-        if moreComing {
+        print("NetServiceBrowser did find service \(service.name)")
+        
+        if !moreComing {
+            service.resolve(withTimeout: 10)
+        } else {
             print("Warning, there are more services coming! Unexpected environment may result in failed communication between rotary stand and the app.")
         }
         
+    }
+    
+    func netServiceDidResolveAddress(_ sender: NetService) {
+        print("Resolve service at address \(sender.addresses![0])");
+    }
+    
+    func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
+        print("Search for rotopad stopped.")
+    }
+    
+    
+    func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
+        print("Will search: \(browser)")
+    }
+    
+    private func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch error: Error) {
+        print("Did not search: \(error)")
+    }
+    
+    
+    public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
+        print("Did remove: \(service)")
     }
     
 }
@@ -212,3 +213,4 @@ extension UDPServer: NetServiceBrowserDelegate {
 protocol UDPServerDelegate {
     func receive(message: String)
 }
+

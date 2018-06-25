@@ -34,6 +34,7 @@
 		8864838120E0179600ECE8FF /* UDPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPServer.swift; sourceTree = "<group>"; };
 		8864838320E0203000ECE8FF /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		88ED810D20E17E4D00ED329D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = /Users/sychram/Repositories/udpsnap/udpsnap/udpsnap/Main.storyboard; sourceTree = "<absolute>"; };
+		88ED810F20E18EB900ED329D /* udpsnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = udpsnap.entitlements; sourceTree = "<group>"; };
 		A5EB19D723AC3DD1931746F3 /* Pods-udpsnap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-udpsnap.release.xcconfig"; path = "Pods/Target Support Files/Pods-udpsnap/Pods-udpsnap.release.xcconfig"; sourceTree = "<group>"; };
 		B54F74FE2C94A8C751909CAD /* Pods-udpsnap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-udpsnap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-udpsnap/Pods-udpsnap.debug.xcconfig"; sourceTree = "<group>"; };
 		D02C501F37BAC8A52FC649E5 /* Pods_udpsnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_udpsnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +92,7 @@
 		8864835E20E00E2B00ECE8FF /* udpsnap */ = {
 			isa = PBXGroup;
 			children = (
+				88ED810F20E18EB900ED329D /* udpsnap.entitlements */,
 				8864835F20E00E2B00ECE8FF /* AppDelegate.swift */,
 				8864836120E00E2C00ECE8FF /* ViewController.swift */,
 				8864836620E00E2D00ECE8FF /* Assets.xcassets */,
@@ -140,6 +142,11 @@
 					8864835B20E00E2B00ECE8FF = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -364,6 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = udpsnap/udpsnap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NU939F5D2T;
 				INFOPLIST_FILE = udpsnap/Info.plist;
@@ -386,6 +394,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = udpsnap/udpsnap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NU939F5D2T;
 				INFOPLIST_FILE = udpsnap/Info.plist;
