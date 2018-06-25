@@ -1,0 +1,6 @@
+framework module Pods_udpsnap {
+  umbrella header "Pods-udpsnap-umbrella.h"
+
+  export *
+  module * { export * }
+}

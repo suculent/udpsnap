@@ -7,21 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22B0FCDE6F7F4B521AE004DD /* Pods_udpsnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02C501F37BAC8A52FC649E5 /* Pods_udpsnap.framework */; };
 		8864836020E00E2B00ECE8FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864835F20E00E2B00ECE8FF /* AppDelegate.swift */; };
 		8864836220E00E2C00ECE8FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864836120E00E2C00ECE8FF /* ViewController.swift */; };
-		8864836520E00E2C00ECE8FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8864836320E00E2C00ECE8FF /* Main.storyboard */; };
 		8864836720E00E2D00ECE8FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8864836620E00E2D00ECE8FF /* Assets.xcassets */; };
 		8864836A20E00E2D00ECE8FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8864836820E00E2D00ECE8FF /* LaunchScreen.storyboard */; };
+		8864837220E00E4200ECE8FF /* README in Resources */ = {isa = PBXBuildFile; fileRef = 8864837120E00E4200ECE8FF /* README */; };
+		8864837420E00FD000ECE8FF /* SharedCaptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864837320E00FD000ECE8FF /* SharedCaptureController.swift */; };
+		8864837820E0116B00ECE8FF /* UDPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864837720E0116B00ECE8FF /* UDPManager.swift */; };
+		8864838220E0179A00ECE8FF /* UDPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864838120E0179600ECE8FF /* UDPServer.swift */; };
+		8864838420E0203000ECE8FF /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864838320E0203000ECE8FF /* CaptureViewController.swift */; };
+		88ED810E20E17E8800ED329D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88ED810D20E17E4D00ED329D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8864835C20E00E2B00ECE8FF /* udpsnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = udpsnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8864835F20E00E2B00ECE8FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8864836120E00E2C00ECE8FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8864836420E00E2C00ECE8FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8864836620E00E2D00ECE8FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8864836920E00E2D00ECE8FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8864836B20E00E2D00ECE8FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8864837120E00E4200ECE8FF /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		8864837320E00FD000ECE8FF /* SharedCaptureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCaptureController.swift; sourceTree = "<group>"; };
+		8864837720E0116B00ECE8FF /* UDPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPManager.swift; sourceTree = "<group>"; };
+		8864837B20E0139E00ECE8FF /* udpsnap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "udpsnap-Bridging-Header.h"; sourceTree = "<group>"; };
+		8864838120E0179600ECE8FF /* UDPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPServer.swift; sourceTree = "<group>"; };
+		8864838320E0203000ECE8FF /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		88ED810D20E17E4D00ED329D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = /Users/sychram/Repositories/udpsnap/udpsnap/udpsnap/Main.storyboard; sourceTree = "<absolute>"; };
+		A5EB19D723AC3DD1931746F3 /* Pods-udpsnap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-udpsnap.release.xcconfig"; path = "Pods/Target Support Files/Pods-udpsnap/Pods-udpsnap.release.xcconfig"; sourceTree = "<group>"; };
+		B54F74FE2C94A8C751909CAD /* Pods-udpsnap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-udpsnap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-udpsnap/Pods-udpsnap.debug.xcconfig"; sourceTree = "<group>"; };
+		D02C501F37BAC8A52FC649E5 /* Pods_udpsnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_udpsnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +44,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B0FCDE6F7F4B521AE004DD /* Pods_udpsnap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		624536D8B1F3659475AAA2CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B54F74FE2C94A8C751909CAD /* Pods-udpsnap.debug.xcconfig */,
+				A5EB19D723AC3DD1931746F3 /* Pods-udpsnap.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		84ADCF149054E87117A57F50 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D02C501F37BAC8A52FC649E5 /* Pods_udpsnap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8864835320E00E2B00ECE8FF = {
 			isa = PBXGroup;
 			children = (
+				8864837120E00E4200ECE8FF /* README */,
 				8864835E20E00E2B00ECE8FF /* udpsnap */,
 				8864835D20E00E2B00ECE8FF /* Products */,
+				624536D8B1F3659475AAA2CB /* Pods */,
+				84ADCF149054E87117A57F50 /* Frameworks */,
+				8864837B20E0139E00ECE8FF /* udpsnap-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,10 +93,14 @@
 			children = (
 				8864835F20E00E2B00ECE8FF /* AppDelegate.swift */,
 				8864836120E00E2C00ECE8FF /* ViewController.swift */,
-				8864836320E00E2C00ECE8FF /* Main.storyboard */,
 				8864836620E00E2D00ECE8FF /* Assets.xcassets */,
+				88ED810D20E17E4D00ED329D /* Main.storyboard */,
 				8864836820E00E2D00ECE8FF /* LaunchScreen.storyboard */,
 				8864836B20E00E2D00ECE8FF /* Info.plist */,
+				8864838320E0203000ECE8FF /* CaptureViewController.swift */,
+				8864837320E00FD000ECE8FF /* SharedCaptureController.swift */,
+				8864837720E0116B00ECE8FF /* UDPManager.swift */,
+				8864838120E0179600ECE8FF /* UDPServer.swift */,
 			);
 			path = udpsnap;
 			sourceTree = "<group>";
@@ -71,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8864836E20E00E2D00ECE8FF /* Build configuration list for PBXNativeTarget "udpsnap" */;
 			buildPhases = (
+				FC0C3A9FA983470B0A929B38 /* [CP] Check Pods Manifest.lock */,
 				8864835820E00E2B00ECE8FF /* Sources */,
 				8864835920E00E2B00ECE8FF /* Frameworks */,
 				8864835A20E00E2B00ECE8FF /* Resources */,
+				8140DD4D80DE1AE394278326 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -96,6 +139,7 @@
 				TargetAttributes = {
 					8864835B20E00E2B00ECE8FF = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -122,13 +166,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8864837220E00E4200ECE8FF /* README in Resources */,
 				8864836A20E00E2D00ECE8FF /* LaunchScreen.storyboard in Resources */,
 				8864836720E00E2D00ECE8FF /* Assets.xcassets in Resources */,
-				8864836520E00E2C00ECE8FF /* Main.storyboard in Resources */,
+				88ED810E20E17E8800ED329D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8140DD4D80DE1AE394278326 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-udpsnap/Pods-udpsnap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BlueSocket/Socket.framework",
+				"${BUILT_PRODUCTS_DIR}/JDStatusBarNotification/JDStatusBarNotification.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Socket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JDStatusBarNotification.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-udpsnap/Pods-udpsnap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC0C3A9FA983470B0A929B38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-udpsnap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8864835820E00E2B00ECE8FF /* Sources */ = {
@@ -136,21 +222,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8864836220E00E2C00ECE8FF /* ViewController.swift in Sources */,
+				8864838420E0203000ECE8FF /* CaptureViewController.swift in Sources */,
+				8864837420E00FD000ECE8FF /* SharedCaptureController.swift in Sources */,
 				8864836020E00E2B00ECE8FF /* AppDelegate.swift in Sources */,
+				8864837820E0116B00ECE8FF /* UDPManager.swift in Sources */,
+				8864838220E0179A00ECE8FF /* UDPServer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8864836320E00E2C00ECE8FF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8864836420E00E2C00ECE8FF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8864836820E00E2D00ECE8FF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -213,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -267,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -278,8 +360,10 @@
 		};
 		8864836F20E00E2D00ECE8FF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B54F74FE2C94A8C751909CAD /* Pods-udpsnap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NU939F5D2T;
 				INFOPLIST_FILE = udpsnap/Info.plist;
@@ -289,6 +373,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinx.udpsnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "udpsnap-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -296,8 +382,10 @@
 		};
 		8864837020E00E2D00ECE8FF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5EB19D723AC3DD1931746F3 /* Pods-udpsnap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NU939F5D2T;
 				INFOPLIST_FILE = udpsnap/Info.plist;
@@ -307,6 +395,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinx.udpsnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "udpsnap-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

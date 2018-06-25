@@ -1,0 +1,20 @@
+PODS:
+  - BlueSocket (1.0.7)
+  - JDStatusBarNotification (1.5.6)
+
+DEPENDENCIES:
+  - BlueSocket
+  - JDStatusBarNotification
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BlueSocket
+    - JDStatusBarNotification
+
+SPEC CHECKSUMS:
+  BlueSocket: c93bef1d8a9a7e65301964605c63220c7c3871a1
+  JDStatusBarNotification: d5829a8f2f291b23b8a54b87fac8bf2549945a2f
+
+PODFILE CHECKSUM: 858966d33d3b81f8a086fa4cc64c7874d760f569
+
+COCOAPODS: 1.5.3

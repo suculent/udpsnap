@@ -1,0 +1,780 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		002AFAF21C33E7C89BC56EF98BD71ACE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F9A0E952988935C32EDDB1429D7133 /* Foundation.framework */; };
+		0D4056B433051102A59BA91671FA372A /* JDStatusBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2512740D7F45666FD357B14AF05D0A99 /* JDStatusBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EED0172233707BAE58B03D2605FE3A9 /* Pods-udpsnap-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE0559167E85907678E05CB1D9CDEA5 /* Pods-udpsnap-dummy.m */; };
+		12730666ABE56983DFC942725A39A35B /* JDStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BB89960C578C3298F611E65B730C89FD /* JDStatusBarNotification.m */; };
+		1A5F653AB8539CF56229ED2653918CD2 /* JDStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A279CCE66DE4A7811EB4F734F00 /* JDStatusBarView.m */; };
+		24B6656F5497464E60AADCA28936F71B /* SocketUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D6F56F3F1EB5A9253D2638D84AA3D4 /* SocketUtils.swift */; };
+		2E1A2D967C45F640F5DE6BC8AEDB69DB /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA5676F50A9920E85EA4032C23E71F9 /* Socket.swift */; };
+		5123A8BE207E10C73048C2A3CBD23768 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2770B482BFE91273C8560623F1422C /* QuartzCore.framework */; };
+		59A450E4DB2FB22D3041F1FB68478148 /* JDStatusBarNotification-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0474D9F4B1C7C2BE7DBEED9A9C55F /* JDStatusBarNotification-dummy.m */; };
+		5EE2228BBAB5622594FE123098054E99 /* SocketProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE09395D24F4D8EBB6C107F0CD5DDE25 /* SocketProtocols.swift */; };
+		67A26CB10596FC248236DF5018851551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F9A0E952988935C32EDDB1429D7133 /* Foundation.framework */; };
+		6867A218ADBC54CE201EAE3A1B22F18D /* JDStatusBarLayoutMarginHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 11C959C1C3FC3540B774870D44D73243 /* JDStatusBarLayoutMarginHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		70119679E2ECF3FA522075C2050D96F3 /* BlueSocket-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E1BC94A3CD0B9911BF3C9FE99F6FD4A /* BlueSocket-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		752B27687138ABA4E9201B5233B2E527 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F9A0E952988935C32EDDB1429D7133 /* Foundation.framework */; };
+		816BA5B8B6767F81C3934B661E1071AC /* BlueSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F01C3174BF8CBB63124978CB6524BC /* BlueSocket-dummy.m */; };
+		8DFC2E743BBEF111BB934CC157028D21 /* JDStatusBarNotification-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C98CFDDEC5A2A28EAE63E9A4E4487F4 /* JDStatusBarNotification-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		977B2ABCD7FFCFBDE39760335CC482D8 /* JDStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 80176DA2A53ED67950DF1C8E1E065EEB /* JDStatusBarStyle.m */; };
+		9865A5D340425478E9A26D258039E254 /* JDStatusBarNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 3659920A5279EF9F289A16BE1CE2FAAD /* JDStatusBarNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0075EECEAB0812F091CD5D91596AEBD /* JDStatusBarLayoutMarginHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC0FC770A102E03B5EE2BD824BEE /* JDStatusBarLayoutMarginHelper.m */; };
+		B715C9D1777CD7BF67BF44808EEA9BEB /* Pods-udpsnap-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A0DDC6F509C3819B9198DD0486AEA700 /* Pods-udpsnap-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB0E1E67EE4288966BD126FF68656CC0 /* JDStatusBarStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 526AF50AEB22D5A89C857A68616FBE37 /* JDStatusBarStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6811D69B3F4B4A4DD629FAF841F92E7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1053405F1F7488B4AD94BD05AC90814D;
+			remoteInfo = BlueSocket;
+		};
+		CB5F10FDA7A67900A52860A35A3C3737 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7DCAF83980656C31E1A66732696966AB;
+			remoteInfo = JDStatusBarNotification;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00F01C3174BF8CBB63124978CB6524BC /* BlueSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BlueSocket-dummy.m"; sourceTree = "<group>"; };
+		04E07A279CCE66DE4A7811EB4F734F00 /* JDStatusBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JDStatusBarView.m; path = JDStatusBarNotification/JDStatusBarView.m; sourceTree = "<group>"; };
+		094A062E3C57BFFCA8C67BBEA72DA71A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09B89AD44A07CF777288A17AA39EFEA7 /* JDStatusBarNotification.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JDStatusBarNotification.modulemap; sourceTree = "<group>"; };
+		0BA5676F50A9920E85EA4032C23E71F9 /* Socket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = Sources/Socket/Socket.swift; sourceTree = "<group>"; };
+		0D2276AFB0CFF4D5AB691E7850432E9B /* JDStatusBarNotification-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JDStatusBarNotification-prefix.pch"; sourceTree = "<group>"; };
+		11C959C1C3FC3540B774870D44D73243 /* JDStatusBarLayoutMarginHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JDStatusBarLayoutMarginHelper.h; path = JDStatusBarNotification/JDStatusBarLayoutMarginHelper.h; sourceTree = "<group>"; };
+		1D92294DF4A839F73F069EFBBEF1ECD3 /* Pods-udpsnap-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-udpsnap-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2512740D7F45666FD357B14AF05D0A99 /* JDStatusBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JDStatusBarView.h; path = JDStatusBarNotification/JDStatusBarView.h; sourceTree = "<group>"; };
+		252513CABAAFF1A0F05CE945B0D83661 /* BlueSocket.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BlueSocket.modulemap; sourceTree = "<group>"; };
+		30C0474D9F4B1C7C2BE7DBEED9A9C55F /* JDStatusBarNotification-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JDStatusBarNotification-dummy.m"; sourceTree = "<group>"; };
+		3659920A5279EF9F289A16BE1CE2FAAD /* JDStatusBarNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JDStatusBarNotification.h; path = JDStatusBarNotification/JDStatusBarNotification.h; sourceTree = "<group>"; };
+		444E058FEE3F79AE97E3515E57300D44 /* Pods_udpsnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_udpsnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46BFFC0FC770A102E03B5EE2BD824BEE /* JDStatusBarLayoutMarginHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JDStatusBarLayoutMarginHelper.m; path = JDStatusBarNotification/JDStatusBarLayoutMarginHelper.m; sourceTree = "<group>"; };
+		526AF50AEB22D5A89C857A68616FBE37 /* JDStatusBarStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JDStatusBarStyle.h; path = JDStatusBarNotification/JDStatusBarStyle.h; sourceTree = "<group>"; };
+		54F9A0E952988935C32EDDB1429D7133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		56BC0AF3642CD57F480C26B1EB0C6685 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F04513FDDEBD9AEAEB01E14F8268B3A /* Socket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Socket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C98CFDDEC5A2A28EAE63E9A4E4487F4 /* JDStatusBarNotification-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JDStatusBarNotification-umbrella.h"; sourceTree = "<group>"; };
+		6E1570B3247F4DA49FF9EEA11D94583C /* Pods-udpsnap-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-udpsnap-frameworks.sh"; sourceTree = "<group>"; };
+		76433960E390356A3D59E52C3A253FD0 /* BlueSocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BlueSocket.xcconfig; sourceTree = "<group>"; };
+		7C1A46D23BE95849F3C2210DB4932142 /* Pods-udpsnap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-udpsnap.release.xcconfig"; sourceTree = "<group>"; };
+		7E1BC94A3CD0B9911BF3C9FE99F6FD4A /* BlueSocket-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BlueSocket-umbrella.h"; sourceTree = "<group>"; };
+		80176DA2A53ED67950DF1C8E1E065EEB /* JDStatusBarStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JDStatusBarStyle.m; path = JDStatusBarNotification/JDStatusBarStyle.m; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		946160029563C7603C334FC7065556D9 /* Pods-udpsnap-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-udpsnap-resources.sh"; sourceTree = "<group>"; };
+		A0DDC6F509C3819B9198DD0486AEA700 /* Pods-udpsnap-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-udpsnap-umbrella.h"; sourceTree = "<group>"; };
+		ACF2441CFD99E8431B7276C4A8813AF8 /* JDStatusBarNotification.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JDStatusBarNotification.xcconfig; sourceTree = "<group>"; };
+		ADDC23ECF4C66B044ED68F6CB2C01BCD /* Pods-udpsnap.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-udpsnap.modulemap"; sourceTree = "<group>"; };
+		ADE0559167E85907678E05CB1D9CDEA5 /* Pods-udpsnap-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-udpsnap-dummy.m"; sourceTree = "<group>"; };
+		B05D3E14D05E924EAD4FC2649FBB5CAF /* Pods-udpsnap-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-udpsnap-acknowledgements.plist"; sourceTree = "<group>"; };
+		B5D6F56F3F1EB5A9253D2638D84AA3D4 /* SocketUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketUtils.swift; path = Sources/Socket/SocketUtils.swift; sourceTree = "<group>"; };
+		BB89960C578C3298F611E65B730C89FD /* JDStatusBarNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JDStatusBarNotification.m; path = JDStatusBarNotification/JDStatusBarNotification.m; sourceTree = "<group>"; };
+		BE09395D24F4D8EBB6C107F0CD5DDE25 /* SocketProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketProtocols.swift; path = Sources/Socket/SocketProtocols.swift; sourceTree = "<group>"; };
+		E9033E55419FE29D9329056B78411B7F /* JDStatusBarNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JDStatusBarNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED018ECBF069C6FDCF7B939E1A0B9EBC /* BlueSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BlueSocket-prefix.pch"; sourceTree = "<group>"; };
+		F2CC7EBFD4DF50907F77BF6CDFC3DABE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC2770B482BFE91273C8560623F1422C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		FF6A27989C8D3E1BEF4743F39A1EA5C5 /* Pods-udpsnap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-udpsnap.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5BC9B5D25E58D12BF13B4EE384DEEE0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				002AFAF21C33E7C89BC56EF98BD71ACE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E68983DC9DFC8B890E0B3E0E98D4C5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67A26CB10596FC248236DF5018851551 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCE9AEA12590157972840FB8ADE10411 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				752B27687138ABA4E9201B5233B2E527 /* Foundation.framework in Frameworks */,
+				5123A8BE207E10C73048C2A3CBD23768 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D016B352217B7FCC52356F138853BBE /* BlueSocket */ = {
+			isa = PBXGroup;
+			children = (
+				0BA5676F50A9920E85EA4032C23E71F9 /* Socket.swift */,
+				BE09395D24F4D8EBB6C107F0CD5DDE25 /* SocketProtocols.swift */,
+				B5D6F56F3F1EB5A9253D2638D84AA3D4 /* SocketUtils.swift */,
+				C414BB8C182CCDD6643D207C15EEE4A3 /* Support Files */,
+			);
+			path = BlueSocket;
+			sourceTree = "<group>";
+		};
+		20BACCB381AB16A392A4F615190D7882 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D016B352217B7FCC52356F138853BBE /* BlueSocket */,
+				C7B99BA13291B664553E6FAF2BB7DF9C /* JDStatusBarNotification */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		35874A17EC32ED738AFAB3EE0844D1BE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				094A062E3C57BFFCA8C67BBEA72DA71A /* Info.plist */,
+				09B89AD44A07CF777288A17AA39EFEA7 /* JDStatusBarNotification.modulemap */,
+				ACF2441CFD99E8431B7276C4A8813AF8 /* JDStatusBarNotification.xcconfig */,
+				30C0474D9F4B1C7C2BE7DBEED9A9C55F /* JDStatusBarNotification-dummy.m */,
+				0D2276AFB0CFF4D5AB691E7850432E9B /* JDStatusBarNotification-prefix.pch */,
+				6C98CFDDEC5A2A28EAE63E9A4E4487F4 /* JDStatusBarNotification-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/JDStatusBarNotification";
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				978007DCB56F415BE390E0F949D4D4E5 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		673A1DCA4945CF18E4C173914820036A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9033E55419FE29D9329056B78411B7F /* JDStatusBarNotification.framework */,
+				444E058FEE3F79AE97E3515E57300D44 /* Pods_udpsnap.framework */,
+				5F04513FDDEBD9AEAEB01E14F8268B3A /* Socket.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7D21CFEC4E208D423295225F82C8F9B6 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AC55283D8274E67D54E1DFCC7B6F304E /* Pods-udpsnap */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				20BACCB381AB16A392A4F615190D7882 /* Pods */,
+				673A1DCA4945CF18E4C173914820036A /* Products */,
+				7D21CFEC4E208D423295225F82C8F9B6 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		978007DCB56F415BE390E0F949D4D4E5 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				54F9A0E952988935C32EDDB1429D7133 /* Foundation.framework */,
+				FC2770B482BFE91273C8560623F1422C /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		AC55283D8274E67D54E1DFCC7B6F304E /* Pods-udpsnap */ = {
+			isa = PBXGroup;
+			children = (
+				F2CC7EBFD4DF50907F77BF6CDFC3DABE /* Info.plist */,
+				ADDC23ECF4C66B044ED68F6CB2C01BCD /* Pods-udpsnap.modulemap */,
+				1D92294DF4A839F73F069EFBBEF1ECD3 /* Pods-udpsnap-acknowledgements.markdown */,
+				B05D3E14D05E924EAD4FC2649FBB5CAF /* Pods-udpsnap-acknowledgements.plist */,
+				ADE0559167E85907678E05CB1D9CDEA5 /* Pods-udpsnap-dummy.m */,
+				6E1570B3247F4DA49FF9EEA11D94583C /* Pods-udpsnap-frameworks.sh */,
+				946160029563C7603C334FC7065556D9 /* Pods-udpsnap-resources.sh */,
+				A0DDC6F509C3819B9198DD0486AEA700 /* Pods-udpsnap-umbrella.h */,
+				FF6A27989C8D3E1BEF4743F39A1EA5C5 /* Pods-udpsnap.debug.xcconfig */,
+				7C1A46D23BE95849F3C2210DB4932142 /* Pods-udpsnap.release.xcconfig */,
+			);
+			name = "Pods-udpsnap";
+			path = "Target Support Files/Pods-udpsnap";
+			sourceTree = "<group>";
+		};
+		C414BB8C182CCDD6643D207C15EEE4A3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				252513CABAAFF1A0F05CE945B0D83661 /* BlueSocket.modulemap */,
+				76433960E390356A3D59E52C3A253FD0 /* BlueSocket.xcconfig */,
+				00F01C3174BF8CBB63124978CB6524BC /* BlueSocket-dummy.m */,
+				ED018ECBF069C6FDCF7B939E1A0B9EBC /* BlueSocket-prefix.pch */,
+				7E1BC94A3CD0B9911BF3C9FE99F6FD4A /* BlueSocket-umbrella.h */,
+				56BC0AF3642CD57F480C26B1EB0C6685 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BlueSocket";
+			sourceTree = "<group>";
+		};
+		C7B99BA13291B664553E6FAF2BB7DF9C /* JDStatusBarNotification */ = {
+			isa = PBXGroup;
+			children = (
+				11C959C1C3FC3540B774870D44D73243 /* JDStatusBarLayoutMarginHelper.h */,
+				46BFFC0FC770A102E03B5EE2BD824BEE /* JDStatusBarLayoutMarginHelper.m */,
+				3659920A5279EF9F289A16BE1CE2FAAD /* JDStatusBarNotification.h */,
+				BB89960C578C3298F611E65B730C89FD /* JDStatusBarNotification.m */,
+				526AF50AEB22D5A89C857A68616FBE37 /* JDStatusBarStyle.h */,
+				80176DA2A53ED67950DF1C8E1E065EEB /* JDStatusBarStyle.m */,
+				2512740D7F45666FD357B14AF05D0A99 /* JDStatusBarView.h */,
+				04E07A279CCE66DE4A7811EB4F734F00 /* JDStatusBarView.m */,
+				35874A17EC32ED738AFAB3EE0844D1BE /* Support Files */,
+			);
+			path = JDStatusBarNotification;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		464F22E019EA131AE17FC5459EA6495B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6867A218ADBC54CE201EAE3A1B22F18D /* JDStatusBarLayoutMarginHelper.h in Headers */,
+				8DFC2E743BBEF111BB934CC157028D21 /* JDStatusBarNotification-umbrella.h in Headers */,
+				9865A5D340425478E9A26D258039E254 /* JDStatusBarNotification.h in Headers */,
+				CB0E1E67EE4288966BD126FF68656CC0 /* JDStatusBarStyle.h in Headers */,
+				0D4056B433051102A59BA91671FA372A /* JDStatusBarView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D4D3139A8AE3B027E150B0CA36DE95B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70119679E2ECF3FA522075C2050D96F3 /* BlueSocket-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C67E4AFAB7CD32B43C91E496B3FE0288 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B715C9D1777CD7BF67BF44808EEA9BEB /* Pods-udpsnap-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1053405F1F7488B4AD94BD05AC90814D /* BlueSocket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 144F6878767568E5277D30049E90B28D /* Build configuration list for PBXNativeTarget "BlueSocket" */;
+			buildPhases = (
+				E6AD96B4663FB4D22595F718A09A0B1E /* Sources */,
+				5BC9B5D25E58D12BF13B4EE384DEEE0E /* Frameworks */,
+				6D4D3139A8AE3B027E150B0CA36DE95B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlueSocket;
+			productName = BlueSocket;
+			productReference = 5F04513FDDEBD9AEAEB01E14F8268B3A /* Socket.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7DCAF83980656C31E1A66732696966AB /* JDStatusBarNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1C225C8670F1191A18B3D345861D3CC /* Build configuration list for PBXNativeTarget "JDStatusBarNotification" */;
+			buildPhases = (
+				86D718853035D3E803BDBAF9437EB3DB /* Sources */,
+				CCE9AEA12590157972840FB8ADE10411 /* Frameworks */,
+				464F22E019EA131AE17FC5459EA6495B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JDStatusBarNotification;
+			productName = JDStatusBarNotification;
+			productReference = E9033E55419FE29D9329056B78411B7F /* JDStatusBarNotification.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A8690BA2BF2713FEC1AB05E6C3A8A74F /* Pods-udpsnap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF20C8AE8A3200CF1F72EF97AC01F36D /* Build configuration list for PBXNativeTarget "Pods-udpsnap" */;
+			buildPhases = (
+				9A53EDA9675AF82E080E63442F34631E /* Sources */,
+				6E68983DC9DFC8B890E0B3E0E98D4C5C /* Frameworks */,
+				C67E4AFAB7CD32B43C91E496B3FE0288 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B192E5C5F374A24BBA952C171AABD889 /* PBXTargetDependency */,
+				D8BDFDFDA9896E0C4E3F9A1BA636101B /* PBXTargetDependency */,
+			);
+			name = "Pods-udpsnap";
+			productName = "Pods-udpsnap";
+			productReference = 444E058FEE3F79AE97E3515E57300D44 /* Pods_udpsnap.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0940;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 673A1DCA4945CF18E4C173914820036A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1053405F1F7488B4AD94BD05AC90814D /* BlueSocket */,
+				7DCAF83980656C31E1A66732696966AB /* JDStatusBarNotification */,
+				A8690BA2BF2713FEC1AB05E6C3A8A74F /* Pods-udpsnap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		86D718853035D3E803BDBAF9437EB3DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0075EECEAB0812F091CD5D91596AEBD /* JDStatusBarLayoutMarginHelper.m in Sources */,
+				59A450E4DB2FB22D3041F1FB68478148 /* JDStatusBarNotification-dummy.m in Sources */,
+				12730666ABE56983DFC942725A39A35B /* JDStatusBarNotification.m in Sources */,
+				977B2ABCD7FFCFBDE39760335CC482D8 /* JDStatusBarStyle.m in Sources */,
+				1A5F653AB8539CF56229ED2653918CD2 /* JDStatusBarView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A53EDA9675AF82E080E63442F34631E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EED0172233707BAE58B03D2605FE3A9 /* Pods-udpsnap-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6AD96B4663FB4D22595F718A09A0B1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				816BA5B8B6767F81C3934B661E1071AC /* BlueSocket-dummy.m in Sources */,
+				2E1A2D967C45F640F5DE6BC8AEDB69DB /* Socket.swift in Sources */,
+				5EE2228BBAB5622594FE123098054E99 /* SocketProtocols.swift in Sources */,
+				24B6656F5497464E60AADCA28936F71B /* SocketUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B192E5C5F374A24BBA952C171AABD889 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BlueSocket;
+			target = 1053405F1F7488B4AD94BD05AC90814D /* BlueSocket */;
+			targetProxy = 6811D69B3F4B4A4DD629FAF841F92E7A /* PBXContainerItemProxy */;
+		};
+		D8BDFDFDA9896E0C4E3F9A1BA636101B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JDStatusBarNotification;
+			target = 7DCAF83980656C31E1A66732696966AB /* JDStatusBarNotification */;
+			targetProxy = CB5F10FDA7A67900A52860A35A3C3737 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		149769C50A20BB75B4D649F68BD92199 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C1A46D23BE95849F3C2210DB4932142 /* Pods-udpsnap.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-udpsnap/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-udpsnap/Pods-udpsnap.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2A0C1B3D92B9694970944FD62E756833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF6A27989C8D3E1BEF4743F39A1EA5C5 /* Pods-udpsnap.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-udpsnap/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-udpsnap/Pods-udpsnap.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2D31E8BFB3B9452B2BDB3ACD48DFEBB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76433960E390356A3D59E52C3A253FD0 /* BlueSocket.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BlueSocket/BlueSocket-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BlueSocket/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BlueSocket/BlueSocket.modulemap";
+				PRODUCT_MODULE_NAME = Socket;
+				PRODUCT_NAME = Socket;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5DC0083F57E9AB706B46C5B5D73B38D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		AEEA80476F98EB645C4DD53EB2BB6D88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		C98F9B6C09A98E1E9343B762420213E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76433960E390356A3D59E52C3A253FD0 /* BlueSocket.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BlueSocket/BlueSocket-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BlueSocket/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BlueSocket/BlueSocket.modulemap";
+				PRODUCT_MODULE_NAME = Socket;
+				PRODUCT_NAME = Socket;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D260BC95AFA8C27B0EBB881839F4738A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACF2441CFD99E8431B7276C4A8813AF8 /* JDStatusBarNotification.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JDStatusBarNotification/JDStatusBarNotification-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JDStatusBarNotification/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JDStatusBarNotification/JDStatusBarNotification.modulemap";
+				PRODUCT_MODULE_NAME = JDStatusBarNotification;
+				PRODUCT_NAME = JDStatusBarNotification;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EAFF1DDC6FBB974B3D14C888F4806A5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACF2441CFD99E8431B7276C4A8813AF8 /* JDStatusBarNotification.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JDStatusBarNotification/JDStatusBarNotification-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JDStatusBarNotification/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JDStatusBarNotification/JDStatusBarNotification.modulemap";
+				PRODUCT_MODULE_NAME = JDStatusBarNotification;
+				PRODUCT_NAME = JDStatusBarNotification;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		144F6878767568E5277D30049E90B28D /* Build configuration list for PBXNativeTarget "BlueSocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C98F9B6C09A98E1E9343B762420213E3 /* Debug */,
+				2D31E8BFB3B9452B2BDB3ACD48DFEBB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DC0083F57E9AB706B46C5B5D73B38D8 /* Debug */,
+				AEEA80476F98EB645C4DD53EB2BB6D88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF20C8AE8A3200CF1F72EF97AC01F36D /* Build configuration list for PBXNativeTarget "Pods-udpsnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A0C1B3D92B9694970944FD62E756833 /* Debug */,
+				149769C50A20BB75B4D649F68BD92199 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1C225C8670F1191A18B3D345861D3CC /* Build configuration list for PBXNativeTarget "JDStatusBarNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D260BC95AFA8C27B0EBB881839F4738A /* Debug */,
+				EAFF1DDC6FBB974B3D14C888F4806A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
