@@ -32,6 +32,8 @@ class UDPServer: NSObject {
     var browser: NetServiceBrowser?
     var service: NetService?
     
+    var clientAddress: Socket.Address?
+    
     init(port: Int, delegate: UDPServerDelegate) {
         self.port = port
         self.delegate = delegate
@@ -48,19 +50,37 @@ class UDPServer: NSObject {
     }
     
     func initNetService() {
+        
+        // Publish a netservice the device will connect to...
         let serviceType = "_camera._udp."
         service = NetService(domain: "local.", type: serviceType, name: "rotocam", port: Int32(self.port))
-        //service = NetService(domain: "local.", type: serviceType, name: "rotocam")
         service!.schedule(in: .main, forMode: .defaultRunLoopMode)
         service!.delegate = self
         service!.publish(options: []) // listener is TCP only!
 
-        print("Publishing netservice \(serviceType)")
-        
+        print("Publishing netservice \(serviceType)")        
         browser = NetServiceBrowser()
         browser!.searchForServices(ofType: "_rotopad._udp", inDomain: "local.")
         browser!.delegate = self
         browser!.schedule(in: .main, forMode: .defaultRunLoopMode)
+    }
+    
+    // Will be used to send commands to device, untested
+    public func send(string: String) {
+        do {
+            try self.listenSocket?.write(from: string, to: clientAddress!)
+        }  catch let error {
+            guard let socketError = error as? Socket.Error else {
+                print("Unexpected error...")
+                return
+            }
+            
+            if self.continueRunning {
+                
+                print("Send Error reported:\n \(socketError.description)")
+                
+            }
+        }
     }
     
     func run() {
@@ -82,6 +102,8 @@ class UDPServer: NSObject {
                 
                 var message = NSMutableData(capacity: UDPServer.bufferSize)
                 let sockinfo = try socket.listen(forMessage: message!, on: self.port, maxBacklogSize: Socket.SOCKET_DEFAULT_MAX_BACKLOG)
+                
+                self.clientAddress = sockinfo.address
                 
                 print("Listening on port: \(socket.listeningPort)")
                 
@@ -187,7 +209,8 @@ extension UDPServer: NetServiceBrowserDelegate {
     }
     
     func netServiceDidResolveAddress(_ sender: NetService) {
-        print("Resolve service at address \(sender.addresses![0])");
+        print("Resolve service at address \(sender.addresses![0])");        
+        NotificationCenter.default.post(name: NSNotification.Name("Resolved"), object: nil)
     }
     
     func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {

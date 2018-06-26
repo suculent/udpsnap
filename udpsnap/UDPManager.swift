@@ -38,30 +38,34 @@ class UDPManager: NSObject {
     //
     
     /** Step rotary table +/-. */
-    func step(_: Int) {
-        
+    public func step(_: Int) {
+        server.send(string: "STEP\(step)\n")
     }
     
     /** Reset rotary table back to step zero. */
-    func rewind() {
-        
+    public func rewind() {
+        server.send(string: "REWIND\n")
     }
     
     /** Set autorotation interval. */
-    func interval(seconds: Int) {
-        
+    public func interval(seconds: Int) {
+        server.send(string: "INT:\(seconds)\n")
+    }
+    
+    /** Set autorotation jitter. */
+    public func jitter(seconds: Int) {
+        server.send(string: "JIT:\(seconds)\n")
     }
     
     /** Start autorotation. */
-    func start() {
-        
+    public func start() {
+        server.send(string: "START\n")
     }
     
     /** Stop autorotation. */
-    func stop() {
-        
+    public func stop() {
+        server.send(string: "STOP\n")
     }
-    
 }
 
 extension UDPManager: UDPServerDelegate {

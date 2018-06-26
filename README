@@ -3,5 +3,8 @@
 Aim of this project is to provide iOS camera capture triggered by UDP commands.
 UDP commands come from device aquired over MDNS.
 In this example an ESP-8266 based rotary pad with H-L293N bridge, HS17 servo and some 3D printed parts.
-The communication may be extended to bi-directional, sending commands like ROTATE, STOP, REWIND or RESET to control the pad.
 
+---
+
+The communication may be extended to bi-directional, sending commands like ROTATE, STOP, REWIND or RESET to control the pad.
+App should be able to reset container and/or order projects in folders.
