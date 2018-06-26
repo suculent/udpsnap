@@ -48,6 +48,12 @@ class ViewController: CaptureViewController {
         super.viewDidLoad()
         self.manager = UDPManager(delegate: self)
         setupFocusGestureRecognizer()
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceResolved), name: NSNotification.Name("Resolved"), object: nil)
+        self.statusLabel.text = "Waiting"
+    }
+    
+    @objc func deviceResolved() {
+        self.statusLabel.text = "Ready"
     }
     
     override func viewWillAppear(_ animated: Bool) {
