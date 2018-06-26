@@ -113,17 +113,23 @@ unsigned long start = millis();
 char packetBuffer[UDP_TX_PACKET_MAX_SIZE];
 char replyBuffer[UDP_TX_PACKET_MAX_SIZE];
 
+unsigned long interval = 2000;
+unsigned long jitter = 100; // prevent vibrations
 
 void loop() {
-  if (timeout < millis()) {
-    stepcount++;
-    timeout = millis() + 2000 + random(-100, 100);    // +10 = 20s/revolution
-    digitalWrite(LED_PIN, HIGH);
-    myStepper.step(-10);
-    digitalWrite(LED_PIN, LOW);
-    Serial.printf("step #%i (%u seconds)\n", stepcount, (millis() - start)/1000);
-    // Broadcast step count to synchronize camera capture over UDP
-    udp_broadcast(stepcount);
+
+  if (stepcount < 200) {
+    if (timeout < millis()) {
+      stepcount++;
+      unsigned long jitter_value = random(-jitter, jitter);
+      timeout = millis() + interval + jitter_value;  // +10 = 20s/revolution
+      digitalWrite(LED_PIN, HIGH);
+      myStepper.step(-10);
+      digitalWrite(LED_PIN, LOW);
+      Serial.printf("step #%i (%u seconds)\n", stepcount, (millis() - start)/1000);
+      // Broadcast step count to synchronize camera capture over UDP
+      udp_broadcast(stepcount);
+    }
   }
 
   int packetSize = Udp.parsePacket();
@@ -142,12 +148,18 @@ void loop() {
       }
     }
     Serial.print(", port ");
-    Serial.println(Udp.remotePort());
+    Serial.println(Udp.remotePort());    
 
     // read the packet into packetBufffer
     Udp.read(packetBuffer, UDP_TX_PACKET_MAX_SIZE);
     Serial.println("Contents:");
     Serial.println(packetBuffer);
-  }
+
+    // TODO: Support commands: PLAY, STOP, REWIND, INTERVAL, JITTER
+
+    // Play will allow stepping, stop will disallow stepping.
+    // Rewind will reset the stepcount to 0 while stepping 10*stepcount
+    // Interval/Jitter will adjust respective parameter.
+  }  
 }
 

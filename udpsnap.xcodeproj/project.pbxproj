@@ -18,6 +18,11 @@
 		8864838220E0179A00ECE8FF /* UDPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864838120E0179600ECE8FF /* UDPServer.swift */; };
 		8864838420E0203000ECE8FF /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864838320E0203000ECE8FF /* CaptureViewController.swift */; };
 		88ED810E20E17E8800ED329D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88ED810D20E17E4D00ED329D /* Main.storyboard */; };
+		88ED811220E24C8700ED329D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ED811120E24C8700ED329D /* SettingsController.swift */; };
+		88ED811620E2516500ED329D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88ED811520E2516500ED329D /* CloudKit.framework */; };
+		88ED811820E2525A00ED329D /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ED811720E2525A00ED329D /* StorageManager.swift */; };
+		88ED811B20E2789E00ED329D /* SettingsCellJitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ED811920E2789D00ED329D /* SettingsCellJitter.swift */; };
+		88ED811C20E2789E00ED329D /* SettingsCellInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ED811A20E2789E00ED329D /* SettingsCellInterval.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		8864838320E0203000ECE8FF /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		88ED810D20E17E4D00ED329D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = /Users/sychram/Repositories/udpsnap/udpsnap/udpsnap/Main.storyboard; sourceTree = "<absolute>"; };
 		88ED810F20E18EB900ED329D /* udpsnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = udpsnap.entitlements; sourceTree = "<group>"; };
+		88ED811120E24C8700ED329D /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		88ED811520E2516500ED329D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		88ED811720E2525A00ED329D /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		88ED811920E2789D00ED329D /* SettingsCellJitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCellJitter.swift; sourceTree = "<group>"; };
+		88ED811A20E2789E00ED329D /* SettingsCellInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCellInterval.swift; sourceTree = "<group>"; };
 		A5EB19D723AC3DD1931746F3 /* Pods-udpsnap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-udpsnap.release.xcconfig"; path = "Pods/Target Support Files/Pods-udpsnap/Pods-udpsnap.release.xcconfig"; sourceTree = "<group>"; };
 		B54F74FE2C94A8C751909CAD /* Pods-udpsnap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-udpsnap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-udpsnap/Pods-udpsnap.debug.xcconfig"; sourceTree = "<group>"; };
 		D02C501F37BAC8A52FC649E5 /* Pods_udpsnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_udpsnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +56,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22B0FCDE6F7F4B521AE004DD /* Pods_udpsnap.framework in Frameworks */,
+				88ED811620E2516500ED329D /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +75,7 @@
 		84ADCF149054E87117A57F50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88ED811520E2516500ED329D /* CloudKit.framework */,
 				D02C501F37BAC8A52FC649E5 /* Pods_udpsnap.framework */,
 			);
 			name = Frameworks;
@@ -103,6 +115,10 @@
 				8864837320E00FD000ECE8FF /* SharedCaptureController.swift */,
 				8864837720E0116B00ECE8FF /* UDPManager.swift */,
 				8864838120E0179600ECE8FF /* UDPServer.swift */,
+				88ED811720E2525A00ED329D /* StorageManager.swift */,
+				88ED811120E24C8700ED329D /* SettingsController.swift */,
+				88ED811A20E2789E00ED329D /* SettingsCellInterval.swift */,
+				88ED811920E2789D00ED329D /* SettingsCellJitter.swift */,
 			);
 			path = udpsnap;
 			sourceTree = "<group>";
@@ -143,6 +159,9 @@
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -230,7 +249,11 @@
 			files = (
 				8864836220E00E2C00ECE8FF /* ViewController.swift in Sources */,
 				8864838420E0203000ECE8FF /* CaptureViewController.swift in Sources */,
+				88ED811B20E2789E00ED329D /* SettingsCellJitter.swift in Sources */,
+				88ED811C20E2789E00ED329D /* SettingsCellInterval.swift in Sources */,
 				8864837420E00FD000ECE8FF /* SharedCaptureController.swift in Sources */,
+				88ED811820E2525A00ED329D /* StorageManager.swift in Sources */,
+				88ED811220E24C8700ED329D /* SettingsController.swift in Sources */,
 				8864836020E00E2B00ECE8FF /* AppDelegate.swift in Sources */,
 				8864837820E0116B00ECE8FF /* UDPManager.swift in Sources */,
 				8864838220E0179A00ECE8FF /* UDPServer.swift in Sources */,

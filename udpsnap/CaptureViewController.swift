@@ -41,7 +41,7 @@ import AVFoundation
     internal func saveImageDataWithCurrentIndex(_ imageData: Data!) {
         let filename = "step_\(self.captureIndex).jpeg" // OK
         let doc = self.URLForDocuments().appendingPathComponent(filename)
-        self.saveDataWithFilename(path: doc, data: imageData)        
+        self.saveDataWithFilename(path: doc, data: imageData)
         let cloud = self.URLForCloud().appendingPathComponent(filename)
         self.saveDataWithFilename(path: cloud, data: imageData)
     }
@@ -68,18 +68,9 @@ import AVFoundation
         return documentURL
     }
     
+        // You can write files and create subdirectories within the Documents subdirectory. You can create files or additional subdirectories in any directory you create.
     func URLForCloud() -> URL! {
-        var documentURL: URL?
-        do {
-            let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)
-            if iCloudDocumentsURL != nil {
-                print("Saving to iCloud...");
-                return iCloudDocumentsURL
-            }
-        } catch {
-            documentURL = nil
-        }
-        return documentURL
+        return FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents").absoluteURL
     }
     
     func setFocusOptions(device: AVCaptureDevice) {
@@ -98,6 +89,8 @@ import AVFoundation
         
         guard !session.isRunning else { return }
         
+        
+        
         if let device = AVCaptureDevice.default(for: AVMediaType.video) {
             
             self.captureDevice = device
@@ -113,6 +106,20 @@ import AVFoundation
                 
                 guard session.canAddOutput(output) else { return }
                 session.addOutput(output)
+                
+                if #available(iOS 11.0, *)
+                {
+                    output.setPreparedPhotoSettingsArray(
+                        [AVCapturePhotoSettings(format:[AVVideoCodecKey:AVVideoCodecType.jpeg])],
+                        completionHandler: nil
+                    )
+                }
+                else
+                {
+                    output.setPreparedPhotoSettingsArray(
+                        [AVCapturePhotoSettings(format:[AVVideoCodecKey:AVVideoCodecJPEG])],
+                        completionHandler: nil)
+                }
                 
                 previewLayer = AVCaptureVideoPreviewLayer(session: session)
                 previewLayer!.frame = self.view.bounds
@@ -168,42 +175,23 @@ import AVFoundation
         }
     }
     
-    func photoOutput(_ captureOutput: AVCapturePhotoOutput,
-                     didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?,
-                     previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?,
-                     resolvedSettings: AVCaptureResolvedPhotoSettings,
-                     bracketSettings: AVCaptureBracketedStillImageSettings?,
-                     error: Error?) {
-        
-        if let error = error {
-            print("error occure : \(error.localizedDescription)")
-        }
-        
-        if  let sampleBuffer = photoSampleBuffer,
-            let previewBuffer = previewPhotoSampleBuffer,
-            let dataImage =  AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer:  sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
-            
-            self.saveImageDataWithCurrentIndex(dataImage)
-                
-            print(UIImage(data: dataImage)?.size as Any)
-            
-        } else {
-            print("some error here")
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation() {
+            self.saveImageDataWithCurrentIndex(imageData)
         }
     }
     
     // This method you can use somewhere you need to know camera permission   state
     func askPermission() {
-        print("here")
-        let cameraPermissionStatus =  AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         
-        switch cameraPermissionStatus {
+        switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
         case .authorized:
             print("Already Authorized")
             DispatchQueue.main.async(){
                 self.startCaptureWithCamera(AVCaptureDevice.Position.back)
             }
             break;
+            
         case .denied:
             print("denied")
             
@@ -211,37 +199,36 @@ import AVFoundation
             let action = UIAlertAction(title: "Ok", style: .cancel,  handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
+            break;
             
         case .restricted:
             print("restricted")
+            break;
+            
         default:
             AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: {
                 [weak self]
                 (granted :Bool) -> Void in
                 
                 DispatchQueue.main.async(){
-                    
-                if granted == true {
-                    // User granted
-                    print("User granted")
-                    DispatchQueue.main.async(){
-                        self!.startCaptureWithCamera(AVCaptureDevice.Position.back)
+                    if granted {
+                        // User granted
+                        print("User granted")
+                        DispatchQueue.main.async(){
+                            self!.startCaptureWithCamera(AVCaptureDevice.Position.back)
+                        }
+                    } else {
+                        // User Rejected
+                        print("User Rejected")
+                        let alert = UIAlertController(title: "WHY?" , message:  "Camera it is the main feature of our application", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                        alert.addAction(action)
+                        self?.present(alert, animated: true, completion: nil)
                     }
-                } else {
-                    // User Rejected
-                    print("User Rejected")
-                    let alert = UIAlertController(title: "WHY?" , message:  "Camera it is the main feature of our application", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                    alert.addAction(action)
-                    self?.present(alert, animated: true, completion: nil)
-                }
-                    
                 }
             });
         }
     }
-    
- 
     
     @objc public override func pause() -> Void {
         super.pause()

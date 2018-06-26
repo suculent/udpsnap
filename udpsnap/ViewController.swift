@@ -14,9 +14,14 @@ class ViewController: CaptureViewController {
     // MARK: Properties
     
     @IBOutlet weak var statusLabel: UILabel!
+        
+    @IBOutlet weak var rewindButton: UIButton!
+    @IBOutlet weak var playStopButton: UIButton! // better than having stop and play as separate functions
+    @IBOutlet weak var settingsButton: UIButton! // to configure settings like delay and jitter, make another project, list and export data...
     
     private var lastStep:Int = 0
-    private var manager: UDPManager?    
+    private var manager: UDPManager?
+    private var storage: StorageManager?
     
     // MARK: Overrides
     
@@ -45,11 +50,15 @@ class ViewController: CaptureViewController {
     // MARK: Lifecycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         self.manager = UDPManager(delegate: self)
+        self.storage = StorageManager(viewController: self)
+        
         setupFocusGestureRecognizer()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceResolved), name: NSNotification.Name("Resolved"), object: nil)
-        self.statusLabel.text = "Waiting"
+        self.statusLabel.text = "Waiting..."
     }
     
     @objc func deviceResolved() {
@@ -91,6 +100,46 @@ class ViewController: CaptureViewController {
         saveCurrentOutputWithScreenshot(index: step) // inherited from super class
         lastStep = step;
     }
+    
+    // MARK: Commands
+    
+    var isRunning: Bool = false; // TODO: FIXME!       
+    
+    @IBAction func rewindPressed(_ sender: Any) {
+        
+        if isRunning {
+            isRunning = false
+            manager?.stop()
+        }
+        manager?.rewind()
+    }
+    
+    lazy var allStates:UIControlState = [.normal, .highlighted, .selected]
+    
+    lazy var stopTitle = NSLocalizedString("Stop", comment: "Command button label")
+    lazy var playTitle = NSLocalizedString("Play", comment: "Command button label")
+    
+    lazy var stopImage = UIImage(named: "stop")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+    lazy var playImage = UIImage(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+    
+    lazy var rewImage = UIImage(named: "rewind")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+    
+    lazy var settingsImage = UIImage(named: "settings")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+    
+    @IBAction func playStopPressed(_ sender: Any) {
+        
+        isRunning = !isRunning
+        
+        if isRunning {
+            manager?.start()
+            self.playStopButton.setImage(stopImage, for: allStates)
+        } else {
+            manager?.stop()
+            self.playStopButton.setImage(playImage, for: allStates)
+        }
+    }
+    
+    
 }
 
 /** UDPManagerProtocol, capture is triggered from UDPServer through UDPServerDelegate. */
