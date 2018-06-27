@@ -53,7 +53,8 @@ class ViewController: CaptureViewController {
         
         super.viewDidLoad()
         
-        self.manager = UDPManager(delegate: self)
+        self.manager = UDPManager.sharedInstance
+        self.manager!.messageDelegate = self
         self.storage = StorageManager(viewController: self)
         
         setupFocusGestureRecognizer()
