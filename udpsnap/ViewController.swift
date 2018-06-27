@@ -103,7 +103,7 @@ class ViewController: CaptureViewController {
     
     // MARK: Commands
     
-    var isRunning: Bool = false; // TODO: FIXME!       
+    var isRunning: Bool = false; // TODO: FIXME!?
     
     @IBAction func rewindPressed(_ sender: Any) {
         if isRunning {
@@ -158,5 +158,20 @@ extension ViewController: UDPManagerProtocol {
     func stateChanged(running: Bool) {
         isRunning = running
         self.updatePlayStop()
+    }
+    
+    func deviceConnected(status: Bool) {
+        if status {
+            self.playStopButton.isHidden = false;
+            self.rewindButton.isHidden = false;
+        } else {
+            let alert = UIAlertController(title: "Sorry :(" , message: "No turntable connected.",  preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .cancel,  handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: {
+                self.playStopButton.isHidden = true;
+                self.rewindButton.isHidden = true;
+            })
+        }
     }
 }

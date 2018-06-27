@@ -74,7 +74,9 @@ class UDPServer: NSObject {
     public func send(string: String) {
         
         guard self.connectedSockets.count != 0 else {
-            // TODO: Notify using delegate that no device is connected.
+            if let d = self.delegate {
+                d.noDeviceConnected()
+            }
             return
         }
         
@@ -245,5 +247,6 @@ extension UDPServer: NetServiceBrowserDelegate {
 
 protocol UDPServerDelegate {
     func receive(message: String)
+    func noDeviceConnected();
 }
 

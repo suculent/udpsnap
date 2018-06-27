@@ -109,9 +109,18 @@ extension UDPManager: UDPServerDelegate {
             }
         }
     }
+    
+    func noDeviceConnected() {
+        DispatchQueue.main.async {
+            if let d = self.messageDelegate {
+                d.deviceConnected(status: false)
+            }
+        }
+    }
 }
 
 protocol UDPManagerProtocol {
     func captureWhenCompleted(step: Int)
     func stateChanged(running: Bool)
+    func deviceConnected(status: Bool)
 }
