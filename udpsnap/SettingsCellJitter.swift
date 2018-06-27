@@ -21,10 +21,11 @@ class SettingsCellJitter: UITableViewCell {
  
     @IBAction public func valueChanged(sender: UISlider) {
         let value = sender.value
-        self.valueLabel?.text = String(format: "%.2f \(unit)", value)
+        self.valueLabel?.text = String(format: "%.0f \(unit)", value)
         if let key = keyName {
             UserDefaults.standard.set(sender.value, forKey: key)
             UserDefaults.standard.synchronize()
+            UDPManager.sharedInstance.jitter(millis: Int(floor(sender.value * 1000)))
         }
     }
 }

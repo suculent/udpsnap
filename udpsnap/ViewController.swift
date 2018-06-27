@@ -106,11 +106,12 @@ class ViewController: CaptureViewController {
     var isRunning: Bool = false; // TODO: FIXME!       
     
     @IBAction func rewindPressed(_ sender: Any) {
-        
         if isRunning {
             isRunning = false
             manager?.stop()
+            
         }
+        lastStep = 0
         manager?.rewind()
     }
     
@@ -127,14 +128,16 @@ class ViewController: CaptureViewController {
     lazy var settingsImage = UIImage(named: "settings")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
     
     @IBAction func playStopPressed(_ sender: Any) {
-        
         isRunning = !isRunning
-        
+        self.updatePlayStop()
+    }
+    
+    func updatePlayStop() {
         if isRunning {
-            manager?.start()
+            manager!.start()
             self.playStopButton.setImage(stopImage, for: allStates)
         } else {
-            manager?.stop()
+            manager!.stop()
             self.playStopButton.setImage(playImage, for: allStates)
         }
     }
@@ -145,9 +148,15 @@ class ViewController: CaptureViewController {
 /** UDPManagerProtocol, capture is triggered from UDPServer through UDPServerDelegate. */
 
 extension ViewController: UDPManagerProtocol {
+    
     func captureWhenCompleted(step: Int) {
         lastStep = step;
         self.statusLabel.text = String(step)
         self.capture(step: step);
+    }
+    
+    func stateChanged(running: Bool) {
+        isRunning = running
+        self.updatePlayStop()
     }
 }

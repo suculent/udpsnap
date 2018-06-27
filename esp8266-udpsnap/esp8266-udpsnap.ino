@@ -111,7 +111,12 @@ int stepcount = 0;
 unsigned long start = millis();
 
 char packetBuffer[UDP_TX_PACKET_MAX_SIZE];
+
 char replyBuffer[UDP_TX_PACKET_MAX_SIZE];
+char RunningReplyBuffer[] = "RUNNING";       // a string to send back
+char StoppedReplyBuffer[] = "STOPPED";       // a string to send back
+char RewindReplyBuffer[] = "REWIND";       // a string to send back
+char OKReplyBuffer[] = "OK";       // a string to send back
 
 unsigned long interval = 2000;
 unsigned long jitter = 100; // prevent vibrations
@@ -155,11 +160,37 @@ void loop() {
     Serial.println("Contents:");
     Serial.println(packetBuffer);
 
-    // TODO: Support commands: PLAY, STOP, REWIND, INTERVAL, JITTER
+    String message = String(packetBuffer);
 
-    // Play will allow stepping, stop will disallow stepping.
-    // Rewind will reset the stepcount to 0 while stepping 10*stepcount
-    // Interval/Jitter will adjust respective parameter.
+    Udp.beginPacket(Udp.remoteIP(), Udp.remotePort());
+
+    if (message.indexOf("PLAY")) {      
+      Udp.write(RunningReplyBuffer);    
+      running = true;  
+    }
+
+    if (message.indexOf("STOPPED")) {
+      Udp.write(RunningReplyBuffer);
+      running = false;
+    }
+
+    if (message.indexOf("REWIND")) {
+      myStepper.step(-10 * stepcount);
+      stepcount = 0;
+      Udp.write(RewindReplyBuffer);
+    }
+
+    if (message.indexOf("INT:")) {
+      String newIntervalString = message.replace("INT:", "");
+      interval = newIntervalString.toInt();
+      Udp.write(OKReplyBuffer);
+    }
+
+    if (message.indexOf("JIT:")) {
+      String newJitterString = message.replace("INT:", "");
+      jitter = newJitterString.toInt();
+      Udp.write(OKReplyBuffer);
+    }
   }  
 }
 

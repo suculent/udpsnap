@@ -12,9 +12,23 @@ import Foundation
 
 class UDPManager: NSObject {
     
+    static let sharedInstance = UDPManager()
+    
     let port = 58266
     
-    fileprivate var messageDelegate: UDPManagerProtocol!
+    public var messageDelegate: UDPManagerProtocol!
+    
+    override init() {
+        super.init()
+        self.server = UDPServer(port: port, delegate: self)
+        print("Swift Echo Server Sample")
+        print("Connect with a command line window by entering 'telnet ::1 \(port)'")
+        
+        DispatchQueue.global(qos: .background).async {
+            print("This is run on the background queue")
+            self.server.run()
+        }
+    }
     
     public var server: UDPServer! // should be private
     
@@ -48,13 +62,13 @@ class UDPManager: NSObject {
     }
     
     /** Set autorotation interval. */
-    public func interval(seconds: Int) {
-        server.send(string: "INT:\(seconds)\n")
+    public func interval(millis: Int) {
+        server.send(string: "INT:\(millis)\n")
     }
     
     /** Set autorotation jitter. */
-    public func jitter(seconds: Int) {
-        server.send(string: "JIT:\(seconds)\n")
+    public func jitter(millis: Int) {
+        server.send(string: "JIT:\(millis)\n")
     }
     
     /** Start autorotation. */
@@ -70,6 +84,15 @@ class UDPManager: NSObject {
 
 extension UDPManager: UDPServerDelegate {
     func receive(message: String) {
+        
+        if message.contains("RUN") { // "RUNNING"
+            self.dispatchStateChange(running: true)
+        }
+        
+        if message.contains("STOP") { // "STOPPED"
+            self.dispatchStateChange(running: false)
+        }
+        
         DispatchQueue.main.async {
             if let d = self.messageDelegate {
                 let indexString = message.replacingOccurrences(of: "P:", with: "").replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\r", with: "")
@@ -78,8 +101,17 @@ extension UDPManager: UDPServerDelegate {
             }
         }
     }
+    
+    func dispatchStateChange(running: Bool) {
+        DispatchQueue.main.async {
+            if let d = self.messageDelegate {
+                d.stateChanged(running: running)
+            }
+        }
+    }
 }
 
 protocol UDPManagerProtocol {
     func captureWhenCompleted(step: Int)
+    func stateChanged(running: Bool)
 }

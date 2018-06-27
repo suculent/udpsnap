@@ -19,12 +19,17 @@ class UDPServer: NSObject {
     static let quitCommand: String = "QUIT"
     static let shutdownCommand: String = "SHUTDOWN"
     static let photoCommand: String = "P:"
+    
+    static let playCommand: String = "PLAY"
+    static let stopCommand: String = "STOP"
+    static let rewindCommand: String = "REWIND"
+    
     static let bufferSize = 4096
     
     let port: Int
     var listenSocket: Socket? = nil
     var continueRunning = true
-    var connectedSockets = [Int32: Socket]()
+    var connectedSockets:[Int32: Socket] = [:]
     let socketLockQueue = DispatchQueue(label: "com.thinx.socketLockQueue")
     
     var delegate: UDPServerDelegate?
@@ -58,7 +63,7 @@ class UDPServer: NSObject {
         service!.delegate = self
         service!.publish(options: []) // listener is TCP only!
 
-        print("Publishing netservice \(serviceType)")        
+        print("Publishing netservice \(serviceType)")
         browser = NetServiceBrowser()
         browser!.searchForServices(ofType: "_rotopad._udp", inDomain: "local.")
         browser!.delegate = self
@@ -67,6 +72,12 @@ class UDPServer: NSObject {
     
     // Will be used to send commands to device, untested
     public func send(string: String) {
+        
+        guard self.connectedSockets.count != 0 else {
+            // TODO: Notify using delegate that no device is connected.
+            return
+        }
+        
         do {
             try self.listenSocket?.write(from: string, to: clientAddress!)
         }  catch let error {
@@ -76,7 +87,6 @@ class UDPServer: NSObject {
             }
             
             if self.continueRunning {
-                
                 print("Send Error reported:\n \(socketError.description)")
                 
             }
@@ -113,7 +123,7 @@ class UDPServer: NSObject {
                     if datagram.bytesRead > 0 {
                         
                         let command = String(data: message! as Data, encoding: String.Encoding.ascii)
-                            
+                        
                         // Photo capture command
                         if (command?.hasPrefix(UDPServer.photoCommand))! {
                             if let d = self.delegate {
@@ -209,7 +219,7 @@ extension UDPServer: NetServiceBrowserDelegate {
     }
     
     func netServiceDidResolveAddress(_ sender: NetService) {
-        print("Resolve service at address \(sender.addresses![0])");        
+        print("Resolve service at address \(sender.addresses![0])");
         NotificationCenter.default.post(name: NSNotification.Name("Resolved"), object: nil)
     }
     
