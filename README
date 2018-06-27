@@ -1,10 +1,21 @@
 # UDP Snap
 
-Aim of this project is to provide iOS camera capture triggered by UDP commands.
-UDP commands come from device aquired over MDNS.
+Aim of this project is to provide iOS camera capture triggered by UDP commands from remote device.
 In this example an ESP-8266 based rotary pad with H-L293N bridge, HS17 servo and some 3D printed parts.
 
----
+## ESP8266
 
-The communication may be extended to bi-directional, sending commands like ROTATE, STOP, REWIND or RESET to control the pad.
-App should be able to reset container and/or order projects in folders.
+App for ESP8266 controls servo by advancing given steps in given interval, which is not exact in order to prevent vibrations.
+Posts notifications on steps, so the iOS camera knows when is the right time to capture numbered step.
+
+## iOS
+
+* Minimal app in Swift 4 for iOS 11+, features latest photo capture APIs and server built on IBM's BlueSocket framework.
+* App starts UDP server and performs camera capture directly to iCloud drive Documents when notified by ESP8266 client.
+* UDP commands are received over WiFi from device acquired over MDNS on the same network.
+* The communication is bi-directional, sending following commands: `PLAY`, `STOP`, `REWIND`.
+* Client app is additionaly able to configure turntable jitter and time-lapse interval using commands `JIT:<Int, millis>! and `INT:<Int, seconds>`.
+
+## Roadmap
+
+* App should be able to reset container and/or order projects in folders in future.
