@@ -1,5 +1,7 @@
 # UDP Snap
 
+[See video](https://www.youtube.com/watch?v=fNixYq2eqGM&feature=youtu.be&a=)
+
 Aim of this project is to provide iOS camera capture triggered by UDP commands from remote device.
 In this example an ESP-8266 based rotary pad with H-L293N bridge, HS17 servo and some 3D printed parts.
 
@@ -19,3 +21,22 @@ Posts notifications on steps, so the iOS camera knows when is the right time to 
 ## Roadmap
 
 * App should be able to reset container and/or order projects in folders in future.
+
+# The Rig
+
+You can find 3D source files in STL format inside the `rig` folder along with original SVGs for wheels. I'm not an industrial designer, so this is first drop, free to refactor.
+
+* There's a known bug in the base where it's not entirely possible to insert servo without cutting a hole in the base. This will be fixed later.
+
+* Also the large cog axis needs to be fastened against servo to fix wheels together safely and prevent skipping a step.
+
+![](docs/rig.jpg)
+
+# Processing
+
+You can use various tools to process captured photos. I've been happy with free trial of Agisoft's [PhotoScan](http://www.agisoft.com) for MacOS (supports High Sierra).
+
+For other platforms, you can use [3DF Zephyr](https://www.3dflow.net/3df-zephyr-free/) which is a free solution as well, but did not work on my version of OS X.
+
+
+![PhotoScan](docs/photoscan.png)
