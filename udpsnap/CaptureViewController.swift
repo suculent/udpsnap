@@ -87,70 +87,62 @@ import AVFoundation
     
     override func startCaptureWithCamera(_ position: AVCaptureDevice.Position) {
         
-        guard !session.isRunning else { return }
-        
-        
-        
-        if let device = AVCaptureDevice.default(for: AVMediaType.video) {
+        guard !session.isRunning else { return }                        
+        guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
             
-            self.captureDevice = device
-            
-            self.setFocusOptions(device: self.captureDevice!)
-        
-            if let input = try? AVCaptureDeviceInput(device: device) {
-                
-                session.sessionPreset = AVCaptureSession.Preset.photo
-                
-                guard session.canAddInput(input) else { return }
-                session.addInput(input)
-                
-                guard session.canAddOutput(output) else { return }
-                session.addOutput(output)
-                
-                if #available(iOS 11.0, *)
-                {
-                    output.setPreparedPhotoSettingsArray(
-                        [AVCapturePhotoSettings(format:[AVVideoCodecKey:AVVideoCodecType.jpeg])],
-                        completionHandler: nil
-                    )
-                }
-                else
-                {
-                    output.setPreparedPhotoSettingsArray(
-                        [AVCapturePhotoSettings(format:[AVVideoCodecKey:AVVideoCodecJPEG])],
-                        completionHandler: nil)
-                }
-                
-                previewLayer = AVCaptureVideoPreviewLayer(session: session)
-                previewLayer!.frame = self.view.bounds
-                previewLayer!.needsDisplayOnBoundsChange = true
-                previewLayer!.accessibilityLabel = "camera_preview"
-                previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
-                
-                // Replace preview layer
-                for layer in self.view.layer.sublayers! {
-                    if layer.accessibilityLabel == "camera_preview" {
-                        layer.removeFromSuperlayer()
-                    }
-                }
-                self.view.layer.insertSublayer(previewLayer!, at: 0)
-                
-                session.startRunning()
-                
-                NotificationCenter.default.addObserver(
-                    self,
-                    selector: #selector(Progress.pause),
-                    name: NSNotification.Name.UIApplicationWillResignActive,
-                    object: nil
+        self.captureDevice = device
+        self.setFocusOptions(device: self.captureDevice!)
+
+        if let input = try? AVCaptureDeviceInput(device: device) {
+
+            session.sessionPreset = AVCaptureSession.Preset.photo
+
+            guard session.canAddInput(input) else { return }
+            session.addInput(input)
+
+            guard session.canAddOutput(output) else { return }
+            session.addOutput(output)
+
+            if #available(iOS 11.0, *) {
+                output.setPreparedPhotoSettingsArray(
+                    [AVCapturePhotoSettings(format:[AVVideoCodecKey:AVVideoCodecType.jpeg])],
+                    completionHandler: nil
                 )
-                
-                NotificationCenter.default.addObserver(
-                    self,
-                    selector: #selector(Progress.resume),
-                    name: NSNotification.Name.UIApplicationWillEnterForeground,
-                    object: nil
-                )
+            } else {
+                output.setPreparedPhotoSettingsArray(
+                    [AVCapturePhotoSettings(format:[AVVideoCodecKey:AVVideoCodecJPEG])],
+                    completionHandler: nil)
             }
+
+            previewLayer = AVCaptureVideoPreviewLayer(session: session)
+            previewLayer!.frame = self.view.bounds
+            previewLayer!.needsDisplayOnBoundsChange = true
+            previewLayer!.accessibilityLabel = "camera_preview"
+            previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+
+            // Replace preview layer
+            for layer in self.view.layer.sublayers! {
+                if layer.accessibilityLabel == "camera_preview" {
+                    layer.removeFromSuperlayer()
+                }
+            }
+            self.view.layer.insertSublayer(previewLayer!, at: 0)
+
+            session.startRunning()
+
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(Progress.pause),
+                name: NSNotification.Name.UIApplicationWillResignActive,
+                object: nil
+            )
+
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(Progress.resume),
+                name: NSNotification.Name.UIApplicationWillEnterForeground,
+                object: nil
+            )
         }
     }
     
