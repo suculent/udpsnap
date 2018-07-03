@@ -12,7 +12,6 @@
 		8864836220E00E2C00ECE8FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864836120E00E2C00ECE8FF /* ViewController.swift */; };
 		8864836720E00E2D00ECE8FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8864836620E00E2D00ECE8FF /* Assets.xcassets */; };
 		8864836A20E00E2D00ECE8FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8864836820E00E2D00ECE8FF /* LaunchScreen.storyboard */; };
-		8864837220E00E4200ECE8FF /* README in Resources */ = {isa = PBXBuildFile; fileRef = 8864837120E00E4200ECE8FF /* README */; };
 		8864837420E00FD000ECE8FF /* SharedCaptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864837320E00FD000ECE8FF /* SharedCaptureController.swift */; };
 		8864837820E0116B00ECE8FF /* UDPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864837720E0116B00ECE8FF /* UDPManager.swift */; };
 		8864838220E0179A00ECE8FF /* UDPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864838120E0179600ECE8FF /* UDPServer.swift */; };
@@ -32,7 +31,6 @@
 		8864836620E00E2D00ECE8FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8864836920E00E2D00ECE8FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8864836B20E00E2D00ECE8FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8864837120E00E4200ECE8FF /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		8864837320E00FD000ECE8FF /* SharedCaptureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCaptureController.swift; sourceTree = "<group>"; };
 		8864837720E0116B00ECE8FF /* UDPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPManager.swift; sourceTree = "<group>"; };
 		8864837B20E0139E00ECE8FF /* udpsnap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "udpsnap-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 		8864835320E00E2B00ECE8FF = {
 			isa = PBXGroup;
 			children = (
-				8864837120E00E4200ECE8FF /* README */,
 				8864835E20E00E2B00ECE8FF /* udpsnap */,
 				8864835D20E00E2B00ECE8FF /* Products */,
 				624536D8B1F3659475AAA2CB /* Pods */,
@@ -192,7 +189,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8864837220E00E4200ECE8FF /* README in Resources */,
 				8864836A20E00E2D00ECE8FF /* LaunchScreen.storyboard in Resources */,
 				8864836720E00E2D00ECE8FF /* Assets.xcassets in Resources */,
 				88ED810E20E17E8800ED329D /* Main.storyboard in Resources */,

@@ -16,6 +16,23 @@ char net_payload[6] = "P:999";
 IPAddress clientIP = atoi("192.168.1.18");
 int clientPort;
 
+unsigned long interval = 20; // 2000;
+int stepcount = 0;
+unsigned long start = millis();
+
+char packetBuffer[UDP_TX_PACKET_MAX_SIZE];
+
+char replyBuffer[UDP_TX_PACKET_MAX_SIZE];
+char RunningReplyBuffer[] = "RUNNING";       // a string to send back
+char StoppedReplyBuffer[] = "STOPPED";       // a string to send back
+char RewindReplyBuffer[] = "REWIND";       // a string to send back
+char OKReplyBuffer[] = "OK";       // a string to send back
+
+
+unsigned long jitter = 0; // prevent vibrations
+
+bool isRunning = true;
+
 void udp_broadcast(int index){  
 
   sprintf(net_payload, "P:%i", index);
@@ -33,10 +50,12 @@ void udp_broadcast(int index){
   Serial.println(clientIP);
   Serial.println("clientPort");
   Serial.println(clientPort);
-    
-  Udp.beginPacket(clientIP, clientPort);
-  Udp.write(net_payload);
-  Udp.endPacket();  
+
+  if (interval < 100) {
+    Udp.beginPacket(clientIP, clientPort);
+    Udp.write(net_payload);
+    Udp.endPacket();  
+  }
 }
 
 #include <Stepper.h>
@@ -73,7 +92,7 @@ void setup() {
 
 
   MDNS.begin("rotopad");
-  MDNS.addService("rotopad", "udp", NET_PORT); // for future commands: start, stop, rewind.
+  MDNS.addService("rotopad", "udp", NET_PORT);
 
   Serial.println();
   Serial.println("Performing mDNS query...");
@@ -86,7 +105,7 @@ void setup() {
     Serial.print(n);
     Serial.println(" service(s) found");
     for (int i = 0; i < n; ++i) {
-      // Print details for each service found
+      // Take first valid service and bail out
       Serial.print(i + 1);
       Serial.print(": ");
       Serial.print(MDNS.hostname(i));
@@ -107,33 +126,24 @@ void setup() {
   Udp.begin(NET_PORT);
 }
 
-int stepcount = 0;
-unsigned long start = millis();
 
-char packetBuffer[UDP_TX_PACKET_MAX_SIZE];
-
-char replyBuffer[UDP_TX_PACKET_MAX_SIZE];
-char RunningReplyBuffer[] = "RUNNING";       // a string to send back
-char StoppedReplyBuffer[] = "STOPPED";       // a string to send back
-char RewindReplyBuffer[] = "REWIND";       // a string to send back
-char OKReplyBuffer[] = "OK";       // a string to send back
-
-unsigned long interval = 2000;
-unsigned long jitter = 100; // prevent vibrations
 
 void loop() {
 
-  if (stepcount < 200) {
-    if (timeout < millis()) {
-      stepcount++;
-      unsigned long jitter_value = random(-jitter, jitter);
-      timeout = millis() + interval + jitter_value;  // +10 = 20s/revolution
-      digitalWrite(LED_PIN, HIGH);
-      myStepper.step(-10);
-      digitalWrite(LED_PIN, LOW);
-      Serial.printf("step #%i (%u seconds)\n", stepcount, (millis() - start)/1000);
-      // Broadcast step count to synchronize camera capture over UDP
-      udp_broadcast(stepcount);
+  // Rotate while isRunning is enabled and stepcount < 5 revolutions
+  if (isRunning == true) {
+    if (stepcount < 10 * 5 * 200) {
+      if (timeout < millis()) {
+        stepcount++;
+        unsigned long jitter_value = random(-jitter, jitter);
+        timeout = millis() + interval + jitter_value;  // +10 = 20s/revolution
+        digitalWrite(LED_PIN, HIGH);
+        myStepper.step(-1);
+        digitalWrite(LED_PIN, LOW);
+        Serial.printf("step #%i (%u seconds)\n", stepcount, (millis() - start)/1000);
+        // Broadcast step count to synchronize camera capture over UDP
+        udp_broadcast(stepcount);
+      }
     }
   }
 
@@ -164,30 +174,32 @@ void loop() {
 
     Udp.beginPacket(Udp.remoteIP(), Udp.remotePort());
 
-    if (message.indexOf("PLAY")) {      
+    if (message.indexOf("PLAY") != 1) {      
       Udp.write(RunningReplyBuffer);    
-      running = true;  
+      isRunning = true;  
     }
 
-    if (message.indexOf("STOPPED")) {
+    if (message.indexOf("STOPPED") != 1) {
       Udp.write(RunningReplyBuffer);
-      running = false;
+      isRunning = false;
     }
 
-    if (message.indexOf("REWIND")) {
+    if (message.indexOf("REWIND") != 1) {
       myStepper.step(-10 * stepcount);
       stepcount = 0;
       Udp.write(RewindReplyBuffer);
     }
 
-    if (message.indexOf("INT:")) {
-      String newIntervalString = message.replace("INT:", "");
+    if (message.indexOf("INT:") != 1) {
+      String newIntervalString = message;
+      newIntervalString.replace("INT:", "");
       interval = newIntervalString.toInt();
       Udp.write(OKReplyBuffer);
     }
 
-    if (message.indexOf("JIT:")) {
-      String newJitterString = message.replace("INT:", "");
+    if (message.indexOf("JIT:") != 1) {
+      String newJitterString = message;
+      newJitterString.replace("INT:", "");
       jitter = newJitterString.toInt();
       Udp.write(OKReplyBuffer);
     }
