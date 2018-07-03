@@ -62,6 +62,7 @@ class ViewController: CaptureViewController {
         self.statusLabel.text = "Waiting..."
     }
     
+    // Selector for incoming Notification (may arrive anytime)
     @objc func deviceResolved() {
         self.statusLabel.text = "Ready"
     }
@@ -122,10 +123,8 @@ class ViewController: CaptureViewController {
     lazy var playTitle = NSLocalizedString("Play", comment: "Command button label")
     
     lazy var stopImage = UIImage(named: "stop")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-    lazy var playImage = UIImage(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-    
-    lazy var rewImage = UIImage(named: "rewind")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-    
+    lazy var playImage = UIImage(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)    
+    lazy var rewImage = UIImage(named: "rewind")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)    
     lazy var settingsImage = UIImage(named: "settings")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
     
     @IBAction func playStopPressed(_ sender: Any) {
